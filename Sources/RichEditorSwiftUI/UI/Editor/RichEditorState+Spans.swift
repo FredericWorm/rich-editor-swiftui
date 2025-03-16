@@ -298,6 +298,11 @@ extension RichEditorState {
   private func handleAddingCharacters(_ newValue: NSAttributedString) {
     let typedChars = newValue.string.utf16Length - rawText.utf16Length
     let startTypeIndex = selectedRange.location - typedChars
+
+    if startTypeIndex < 0 {
+      startTypeIndex = 0;
+    }
+
     let startTypeChar = newValue.string.utf16.map({ $0 })[startTypeIndex]
 
     if startTypeChar == "\n".utf16.first
