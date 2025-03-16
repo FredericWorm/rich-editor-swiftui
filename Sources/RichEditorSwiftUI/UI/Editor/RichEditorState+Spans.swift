@@ -297,7 +297,7 @@ extension RichEditorState {
      */
   private func handleAddingCharacters(_ newValue: NSAttributedString) {
     let typedChars = newValue.string.utf16Length - rawText.utf16Length
-    let startTypeIndex = selectedRange.location - typedChars
+    var startTypeIndex = selectedRange.location - typedChars
 
     if startTypeIndex < 0 {
       startTypeIndex = 0;
